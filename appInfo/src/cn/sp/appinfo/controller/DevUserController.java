@@ -18,12 +18,11 @@ public class DevUserController {
     private DevUserService devUserService;
     @RequestMapping("/beforeLogin")
     public String beforeLogin(){
-        System.out.println("1111111111111111111111111");
         return  "devlogin";
     }
-    @RequestMapping("/login")
-    public String Login(String devCode, String devpPassword, HttpSession session, Model model){
-        DevUser devUser =devUserService.login(devCode,devpPassword);
+    @RequestMapping("/dologin")
+    public String Login(String devCode, String devPassword, HttpSession session, Model model){
+        DevUser devUser =devUserService.login(devCode,devPassword);
         if(devUser != null){
             session.setAttribute("devUserSession",devUser);
             return "developer/main";
