@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans">
+
+
+	<!-- 开启注解驱动 -->
+	<mvc:annotation-driven/>
+	<!-- 开启组件扫描 -->
+	<context:component-scan base-package="cn.sp.appinfo"/>
+	<!-- 配置视图解析器，把controller返回的字符串，映射到指定的jsp，prefix是配置前缀，suffix是配置后缀，如果controller返回的字符串是success，这最后的路径就是/WEB-INF/success.jsp -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 配置文件上传的解析器 -->
+    <!-- id必须叫这个名字，因为Spring在这部分是根据BeanId来查找 -->
+<!--     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="50000000000"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean> -->
+	 <import resource="applicationContext.xml"/>
+
+</beans>
